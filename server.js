@@ -9,19 +9,20 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3001
 
+const MongoDBLink = process.env.MONGO_DB
+
 app.listen(PORT, () => {
     console.log('listening');
 })
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://seanroades:justiN95!@virtual-worlds-cluster.fytit.mongodb.net/RRF-Wallet?retryWrites=true&w=majority";
+const uri = MongoDBLink;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get("/test", (req, res) => {
     const { MongoClient } = require("mongodb");
     // Connection URI
-    const uri =
-    "mongodb+srv://seanroades:justiN95!@virtual-worlds-cluster.fytit.mongodb.net/RRF-Wallet?retryWrites=true&w=majority";
+    const uri = MongoDBLink;
     // Create a new MongoClient
     var recommendations = [];
     const client = new MongoClient(uri);
